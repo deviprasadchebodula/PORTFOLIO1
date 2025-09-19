@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Dark theme with blue accents */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Dark Portfolio Color Palette */
+    --background: 0 0% 5%; /* Near-black charcoal */
+    --foreground: 0 0% 92%; /* Light gray text */
+
+    --card: 0 0% 8%; /* Dark card background */
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 207 100% 56%; /* Electric blue #1E90FF */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 207 100% 56%;
+
+    --secondary: 0 0% 12%; /* Darker secondary */
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 0 0% 15%; /* Muted backgrounds */
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 207 100% 56%; /* Blue accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%; /* Subtle borders */
+    --input: 0 0% 15%; /* Input backgrounds */
+    --ring: 207 100% 56%; /* Blue focus rings */
+
+    --radius: 0.75rem;
+
+    /* Custom Portfolio Tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(207 100% 56% / 0.1), hsl(207 100% 56% / 0.05));
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 8%), hsl(0 0% 12%));
+    --glow-primary: 0 0 30px hsl(207 100% 56% / 0.3);
+    --glow-soft: 0 0 20px hsl(207 100% 56% / 0.2);
+    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold 
+           transition-all duration-300 hover:shadow-[var(--glow-primary)] 
+           hover:scale-105 transform;
+  }
+
+  .btn-hero-secondary {
+    @apply border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold 
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground 
+           hover:shadow-[var(--glow-soft)] hover:scale-105 transform;
+  }
+
+  /* Card Components */
+  .portfolio-card {
+    @apply bg-[var(--card-gradient)] border border-border rounded-xl p-6 
+           transition-all duration-300 hover:shadow-[var(--shadow-elegant)] 
+           hover:scale-[1.02] hover:border-primary/30;
+  }
+
+  .skill-chip {
+    @apply bg-secondary border border-border px-4 py-2 rounded-full text-sm
+           transition-all duration-300 hover:border-primary hover:text-primary
+           hover:shadow-[var(--glow-soft)];
+  }
+
+  /* Profile Picture Glow */
+  .profile-glow {
+    @apply rounded-full border-4 border-primary shadow-[var(--glow-primary)]
+           transition-all duration-500 hover:shadow-[var(--glow-primary)] hover:scale-105;
+  }
+
+  /* Section Animations */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-foreground/80 hover:text-primary transition-colors duration-300
+           relative after:content-[''] after:absolute after:w-0 after:h-0.5 
+           after:bg-primary after:left-0 after:-bottom-1 after:transition-all 
+           after:duration-300 hover:after:w-full;
+  }
+
+  .nav-link.active {
+    @apply text-primary after:w-full;
+  }
+}
